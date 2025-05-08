@@ -226,6 +226,8 @@ jobs:
           commit_options: "${{ (inputs.amend_commit == true && '--amend --no-edit') || '' }}"
           push_options: "${{ (inputs.amend_commit == true && '--force-with-lease') || '' }}"
           skip_fetch: ${{ inputs.amend_commit == true }}
+        env:
+          GIT_AUTH_TOKEN: ${{ secrets.ACTIONS_PAT }}
 
       - name: Artifact upload
         id: artifact-upload-step
